@@ -1,0 +1,3 @@
+PROJECT(STLpractice)
+#ADD_SUBDIRECTORY(src bin)
+ADD_SUBDIRECTORY(src)
