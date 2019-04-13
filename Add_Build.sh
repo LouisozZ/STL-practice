@@ -1,6 +1,12 @@
 #!/bin/bash
 
-#把文件从 /src 下移动到与其文件名相同的文件夹下
+#检测文件是否存在
+if [ $1 == clean ]; then
+    cd build
+    make clean
+    exit 0
+fi
+
 cd src
 test -f $1.cpp
 if [ $? != 0 ]; then
@@ -8,21 +14,25 @@ if [ $? != 0 ]; then
     exit 0
 fi
 
-mkdir $1 && DIR_HAVE_EXIST=0 && mv_sure=y || DIR_HAVE_EXIST=1
-if [ ${DIR_HAVE_EXIST} == 1 ]; then
-    read -p "directory $1 have existed, do you want to move $1.cpp into it?[y/n] " mv_sure
+# 寻找要编译的目标文件是否已经在编译列表里面
+grep "$1.cpp" CMakeLists.txt >/dev/null
+
+if [ $? == 0 ]; then 
+# 找到了一行，则表示已存在，所以不添加
+    echo -e "target $1 have been existed!"
 else
-    echo -e "test ${DIR_HAVE_EXIST}"
+# 否则在最后一行添加
+    sed -i "\$aADD_EXECUTABLE($1 $1.cpp)" CMakeLists.txt
+    echo -e "add a new line\n"
 fi
 
-if [ ${mv_sure} == "y" ] || [ ${mv_sure} == "Y" ]; then
-    mv $1.cpp $1/
-    echo -e "have move $1.cpp into /src/$1\n"
-else
-    echo -e "exit...\n"
-    exit 0
+echo -e "now to build $1..."
+cd ../build && cmake .. && make
+if [ $? == 0 ]; then
+    echo "------------------------------"
+    echo -e "vvvvvvvvvvvvvvvvvvvvvvvvvvvvvv\n"
+    cd ../bin && ./$1
+    echo -e "\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
+    echo "------------------------------"
 fi
-
-# build 该文件 
-echo -e "now to build $1...\n"
 exit 0
