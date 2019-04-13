@@ -23,6 +23,6 @@ else
     exit 0
 fi
 
-# build 该文件
+# build 该文件 
 echo -e "now to build $1...\n"
 exit 0
