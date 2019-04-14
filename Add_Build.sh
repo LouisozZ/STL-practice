@@ -1,12 +1,12 @@
 #!/bin/bash
 
-#检测文件是否存在
+#检测是否是clean
 if [ $1 == clean ]; then
     cd build
     make clean
     exit 0
 fi
-
+#检测文件是否存在
 cd src
 test -f $1.cpp
 if [ $? != 0 ]; then
@@ -23,7 +23,7 @@ if [ $? == 0 ]; then
 else
 # 否则在最后一行添加
     sed -i "\$aADD_EXECUTABLE($1 $1.cpp)" CMakeLists.txt
-    echo -e "add a new line\n"
+    echo -e "add \"ADD_EXECUTABLE($1 $1.cpp)\" into src/CMakeLists.txt...\n"
 fi
 
 echo -e "now to build $1..."
