@@ -29,10 +29,11 @@ fi
 echo -e "now to build $1..."
 cd ../build && cmake .. && make
 if [ $? == 0 ]; then
-    echo "------------------------------"
-    echo -e "vvvvvvvvvvvvvvvvvvvvvvvvvvvvvv\n"
+    echo "--------------------------------------------------"
+    echo "file : PROJECT_SOURCE_DIR/src/$1.cpp"
+    echo -e "vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv\n"
     cd ../bin && ./$1
-    echo -e "\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
-    echo "------------------------------"
+    echo -e "\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^"
+    echo "--------------------------------------------------"
 fi
 exit 0
