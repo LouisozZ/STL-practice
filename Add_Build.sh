@@ -1,15 +1,56 @@
 #!/bin/bash
-
+FILE_EXIST=0
+function usage(){
+    echo -e "usage : 
+    ./Add_Build.sh <TARGET>\t\tbuild file whose name is TARGET.cpp and creat a target file named TARGET and then run it
+    ./Add_Build.sh -r <TARGET>\t\tjust run a target file whoes name is TARGET
+    ./Add_Build.sh -d <TARGET>\t\tdelete the files related to TARGET and the cmake command about it
+    "
+}
 #检测是否是clean
-if [ $1 == clean ]; then
-    cd build
-    make clean
+if [ $# == 1 ]; then
+    if [ $1 == clean ]; then
+        cd build
+        make clean
+        exit 0
+    elif [ -f src/$1.cpp ]; then
+        #检测文件是否存在
+        FILE_EXIST=1
+    else
+        usage
+    fi
+elif [ $# == 2 ]; then 
+    if [ ! -e ./bin/$2 ]; then
+        usage
+        echo -e "target file $2 is not existed!\nexit..."
+        exit 0
+    fi
+    case $1 in
+        "-r")
+            ./bin/$2
+            exit 0
+            ;;
+        "-d")
+            rm ./bin/$2
+            rm ./src/$2.cpp
+            deleteline=`grep -n "$2" ./src/CMakeLists.txt | awk 'BEGIN {FS=":"} {print $1}'`
+            echo -e "while delete line ${deleteline} in ./src/CMakeLists.txt"
+            sed -i "${deleteline}d" ./src/CMakeLists.txt
+            exit 0
+            ;;
+        *)
+            usage
+            exit 0
+            ;;
+    esac
+else
+    usage
     exit 0
 fi
+
 #检测文件是否存在
 cd src
-test -f $1.cpp
-if [ $? != 0 ]; then
+if [ ${FILE_EXIST} == 0 ]; then
     echo -e "$1.cpp not existed ! \nexit build...\n"
     exit 0
 fi
