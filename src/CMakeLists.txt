@@ -4,3 +4,6 @@ SET(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
 INCLUDE_DIRECTORIES(${PROJECT_SOURCE_DIR}/include)
 
 ADD_EXECUTABLE(usingTYPE usingTYPE.cpp)
+ADD_EXECUTABLE(Functemplate Functemplate.cpp)
+ADD_EXECUTABLE(classtest classtest.cpp)
+ADD_EXECUTABLE(newinit newinit.cpp)

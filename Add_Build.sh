@@ -4,9 +4,11 @@ OPTION=
 TARGETNAME=
 function usage(){
     echo -e "usage : 
-    ./Add_Build.sh <TARGET>\t\tbuild file whose name is TARGET.cpp and creat a target file named TARGET and then run it
-    ./Add_Build.sh -r <TARGET>\t\tjust run a target file whoes name is TARGET
-    ./Add_Build.sh -d <TARGET>\t\tdelete the files related to TARGET and the cmake command about it
+    $0 <TARGET>\t\tbuild file whose name is TARGET.cpp and creat a target file named TARGET and then run it
+    $0 -r <TARGET>\t\tjust run a target file whoes name is TARGET
+    $0 -d <TARGET>\t\tdelete the files related to TARGET and the cmake command about it
+    $0 -u <TARGET>\t\trecover TARGET.cpp from deletedcode folder to src folder and then build it
+    $0 clean \t\tclean all target files and build files.
     "
 }
 #检测是否是clean
@@ -68,7 +70,7 @@ fi
 
 #检测文件是否存在
 cd src
-if [ ${OPTION} != "-u" ] && [ ${FILE_EXIST} == 0 ]; then
+if [ "${OPTION}" != "-u" ] && [ ${FILE_EXIST} == 0 ]; then
     echo -e "${TARGETNAME}.cpp not existed ! \nexit build...\n"
     exit 0
 fi
