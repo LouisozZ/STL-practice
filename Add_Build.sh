@@ -5,9 +5,9 @@ TARGETNAME=
 function usage(){
     echo -e "usage : 
     $0 <TARGET>\t\tbuild file whose name is TARGET.cpp and creat a target file named TARGET and then run it
-    $0 -r <TARGET>\t\tjust run a target file whoes name is TARGET
-    $0 -d <TARGET>\t\tdelete the files related to TARGET and the cmake command about it
-    $0 -u <TARGET>\t\trecover TARGET.cpp from deletedcode folder to src folder and then build it
+    $0 <TARGET> -r\t\tjust run a target file whoes name is TARGET
+    $0 <TARGET> -d\t\tdelete the files related to TARGET and the cmake command about it
+    $0 <TARGET> -u\t\trecover TARGET.cpp from deletedcode folder to src folder and then build it
     $0 clean \t\tclean all target files and build files.
     "
 }
@@ -25,8 +25,8 @@ if [ $# == 1 ]; then
         usage
     fi
 elif [ $# == 2 ]; then 
-    TARGETNAME=$2
-    OPTION=$1
+    TARGETNAME=$1
+    OPTION=$2
     if [ ${OPTION} != "-u" ] && [ ! -e ./bin/${TARGETNAME} ]; then
         usage
         echo -e "target file ${TARGETNAME} is not existed!\nexit..."
