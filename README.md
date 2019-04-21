@@ -43,5 +43,6 @@ usage :
 [C++模板](./doc/模板.md)\
 [构造函数](./doc/构造函数.md)\
 [new 与 delete](./doc/有关于new和delete.md)\
-[C++内存模型](./doc/内存模型.md)
+[C++内存模型](./doc/内存模型.md)\
+[const限定符](./doc/const限定符.md)
 ### STL

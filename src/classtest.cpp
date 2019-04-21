@@ -6,10 +6,13 @@
 #include <cstdio>
 using namespace std;
 
+#define TEST_STATIC
 const int EXPLICIT_DELETE = 1;
-
+const int MAX_LENGTH = 12;
 class Test{
 private:
+    
+    int mounth[MAX_LENGTH];
     int m_a;
     char m_b;
 public:
@@ -55,11 +58,15 @@ int Test::add_a_b()
     return m_a+m_b;
 }
 
+
 //为函数指针取别名
 using functype = void (Test::*)();
 
+// static Test static_item;
+
 int main()
 {
+#ifndef TEST_STATIC
     Test item7;
     Test item8(8,'t');
     //可以通过下述代码来获取一个类成员函数与类对象的关系
@@ -97,4 +104,9 @@ int main()
         delete item6;
     }
     return 0;
+#else
+    Test item7;
+    Test item6;
+    return 0;
+#endif
 }
