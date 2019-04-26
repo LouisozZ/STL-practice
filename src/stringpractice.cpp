@@ -24,7 +24,7 @@ namespace BadString{
             value[0] = '\0';
             return;
         }
-        length = strlen(input) + 1;
+        length = strlen(input) + 1;     // 因为 strlen 返回的字符串长度不包含末尾的空字符
         value = new char [length];
         strncpy(value,input,length-1);
         value[length-1] = '\0';      
