@@ -22,14 +22,9 @@ namespace BadString{
             value = new char [1];
             length =1;
             value[0] = '\0';
+            return;
         }
-        
         length = strlen(input) + 1;
-        if( value != nullptr )
-        {
-            delete [] value;
-            value = nullptr;
-        }
         value = new char [length];
         strncpy(value,input,length-1);
         value[length-1] = '\0';      
@@ -43,7 +38,7 @@ namespace BadString{
     }
     void STRing::show()
     {
-        cout << value << endl;
+        cout << value << " : " << (void*)value<< "\nand the length is :" << length <<endl<<endl;
         return;
     }
     istream& operator >>(istream &ism, STRing &item)
@@ -66,6 +61,11 @@ namespace BadString{
         strncpy(item.value, tmpvalue, newlength-1);
         item.value[newlength-1]= '\0';
         return ism;
+    }
+    ostream & operator << (ostream & osm, const STRing & item)
+    {
+        osm << item.value;
+        return osm;
     }
 }
 

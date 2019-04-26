@@ -24,6 +24,7 @@ namespace BadString{
             ~STRing();
             void show();
             friend istream& operator >>(istream &, STRing &);
+            friend ostream& operator <<(ostream&,const STRing &);
     };
 
 }
