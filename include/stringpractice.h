@@ -6,36 +6,42 @@ namespace usualuse{
     using std::cin;
     using std::cout;
     using std::endl;
+    using std::istream;
+    using std::ostream;
 }
 
 namespace BadString{
+    using namespace usualuse;
     class STRing{
         private:
-            enum {SINGLE_MAX=512}；
-            static int objnum = 0;
+            enum {SINGLE_MAX=512};
             char *value;
             int length;
         public:
+            static int objnum;
             STRing();
             STRing(const char *);
             ~STRing();
             void show();
             friend istream& operator >>(istream &, STRing &);
-    }
+    };
+
 }
 
 namespace OkString{
+    using namespace usualuse;
     class STRing{
         private:
-            static int objnum = 0;
+            static int objnum;
             char *value;
             int length;
         public:
             STRing();
             STRing(const char *);
             STRing(const STRing&);
-            friend istream& operatort >>(istream &, STRing &);
+            friend istream& operator>>(istream &, STRing &);
             ~STRing();
-    }
+    };
+    
 }
 #endif

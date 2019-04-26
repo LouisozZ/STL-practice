@@ -15,8 +15,8 @@ int main()
     STRing item3 = item2;
 
     cout << "now to show the result:" << endl;
-    cout << "item1" << item1.show();
-    cout << "item2" << item2.show();
-    cout << "item3" << item3.show();
+    cout << "item1 :";item1.show();
+    cout << "item2 :";item2.show();
+    cout << "item3 :";item3.show();
 
 }

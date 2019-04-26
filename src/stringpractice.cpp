@@ -4,6 +4,7 @@
 
 namespace BadString{
     using namespace usualuse;
+    int STRing::objnum = 0;
     STRing::STRing()
     {
         objnum += 1;
@@ -66,4 +67,10 @@ namespace BadString{
         item.value[newlength-1]= '\0';
         return ism;
     }
+}
+
+namespace OkString{
+    using namespace usualuse;
+    int STRing::objnum = 0;
+    
 }
