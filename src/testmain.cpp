@@ -12,13 +12,20 @@ const int& function(const int &i)
 class Test{
     private:
         const int m_ad;
+        // int m_ad;
         int print;
     public:
         Test(int ad);
+        Test(Test &test);
         Test();
         void show();
+        // Test& operator=(Test&);
 };
 Test::Test(int ad):m_ad(ad)
+{
+    print = 28;
+};
+Test::Test(Test &test):m_ad(test.m_ad)
 {
     print = 28;
 };
@@ -26,6 +33,14 @@ Test::Test():m_ad(0)
 {
     print = 0;
 }
+// Test& Test::operator=(Test& input)
+// {
+//     if(this == &input)
+//         return *this;
+//     print = input.print;
+//     m_ad = input.m_ad;
+//     return *this;
+// }
 void Test::show()
 {
     cout << "m_ad : "<< m_ad << endl;
@@ -59,12 +74,12 @@ int main()
     cout << result << endl;
     cout << input << endl;
 
-    Test tttt(34);
-    tttt.show();
-    //tttt = Test(21);
-    tttt.show();
-    Test tt4;
-    tt4.show();
+    Test test1(34);
+    test1.show();
+    // test1 = Test(21);
+    // test1.show();
+    Test test2 = test1;
+    test2.show();
 
     return 0;
 
