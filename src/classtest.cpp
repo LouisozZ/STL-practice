@@ -98,7 +98,7 @@ int main()
 
     if(EXPLICIT_DELETE)
     {
-        //当没有显示调用 delete 来删除 new 出来的对象的时候是不会调用对应的析构函数的
+        //当没有显式调用 delete 来删除 new 出来的对象的时候是不会调用对应的析构函数的
         delete item4;
         delete item5;
         delete item6;

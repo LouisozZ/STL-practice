@@ -11,7 +11,7 @@ namespace BadString{
         cout << "Invoke the default construct function." << endl;
         value = new char [1];
         length =1;
-        value[0] = '\0';
+        value[length-1] = '\0';
     }
     STRing::STRing(const char* input)
     {
@@ -64,7 +64,7 @@ namespace BadString{
     }
     ostream & operator << (ostream & osm, const STRing & item)
     {
-        osm << item.value;
+        osm << item.value << " and it at:" << (void*)item.value << endl;
         return osm;
     }
 }
@@ -72,5 +72,92 @@ namespace BadString{
 namespace OkString{
     using namespace usualuse;
     int STRing::objnum = 0;
+    STRing::STRing()
+    {
+        cout << "Invoke default constructor." << endl;
+        objnum++;
+        cout << "now there are " << objnum << " items." << endl;
+        value = new char [1];
+        length = 1;
+        value[length-1] = '\0';
+    }
+
+    STRing::STRing(const char * input)
+    {
+        cout << "Invoke STRing(const char *)." << endl;
+        objnum++;
+        cout << "now there are " << objnum << " items." << endl;
+        if(input == nullptr)
+        {
+            value = new char [1];
+            length = 1;
+            value[length-1] = '\0';
+            return;
+        }
+        length = strlen(input) + 1;
+        value = new char [length];
+        strcpy(value,input);
+        value[length-1] = '\0';
+    }
+
+    STRing::STRing(const STRing& item)
+    {
+        cout << "Invoke STRing(const STRing&)." << endl;
+        objnum++;
+        cout << "now there are " << objnum << " items." << endl;
+        length = item.length;
+        value = new char [length];
+        strcpy(value,item.value);
+        value[length - 1] = '\0';
+    }
+
+    STRing& STRing::operator=(const STRing & item)
+    {
+        cout << "Invoke operator=(const STRing&)." << endl;
+        if(&item == this)
+            return *this;
+        
+        length = item.length;
+        delete [] value;
+        value = new char [length];
+        strcpy(value, item.value);
+        value[length - 1] = '\0';
+        return *this;
+    }
+
+    STRing::~STRing()
+    {
+        cout << "Invoke distructor." << endl;
+        objnum--;
+        cout << "now there are " << objnum << " items left." << endl;
+        delete [] value;
+    }
+
+    ostream& operator<<(ostream &osm, STRing &item)
+    {
+        osm << item.value << " and it at:" << (void*)item.value << endl;
+        return osm;
+    }
+
+    istream& operator>>(istream &ism, STRing &item)
+    {
+        char tmp[item.SINGLE_MAX];
+        ism >> tmp;
+        int tmplength = strlen(tmp) + 1;
+        if(tmplength >= item.length)
+        {
+            delete [] item.value;
+            item.value = new char [tmplength];
+            item.length = tmplength;
+            strcpy(item.value, tmp);
+            item.value[item.length - 1] = '\0';
+            return ism;
+        }
+        
+        item.length = tmplength;
+        strcpy(item.value,tmp);
+        item.value[item.length - 1] = '\0';
+        return ism;
+    }
     
 }

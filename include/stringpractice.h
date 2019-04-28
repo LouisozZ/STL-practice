@@ -14,11 +14,11 @@ namespace BadString{
     using namespace usualuse;
     class STRing{
         private:
+            static int objnum;
             enum {SINGLE_MAX=512};
             char *value;
             int length;
         public:
-            static int objnum;
             STRing();
             STRing(const char *);
             ~STRing();
@@ -33,13 +33,16 @@ namespace OkString{
     using namespace usualuse;
     class STRing{
         private:
+            enum {SINGLE_MAX=512};
             static int objnum;
             char *value;
-            int length;
+            int length;     //length 是包含了末尾空字符的长度
         public:
             STRing();
             STRing(const char *);
             STRing(const STRing&);
+            STRing& operator=(const STRing &);
+            friend ostream& operator<<(ostream &, STRing &);
             friend istream& operator>>(istream &, STRing &);
             ~STRing();
     };
