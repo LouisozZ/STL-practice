@@ -20,7 +20,7 @@ function usage(){
 
 function FileExitTest()
 {
-    if [ -f src/$1.cpp ]; then
+    if [ -f src/$1.cpp ] || [ -f deletedcode/$1.cpp ]; then
         #检测文件是否存在
         FILE_EXIST=1
     else
