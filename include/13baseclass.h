@@ -11,13 +11,18 @@ namespace usualuse{
 
 using namespace usualuse;
 
-class baseTest{
+class BaseClass{
     private:
         string m_str1;
         string m_str2;
     public:
-        baseTest();
-        baseTest(string & str1, string &str2);
+        BaseClass();
+        ~BaseClass();
+        BaseClass(string & str1, string &str2);
+        void function1();
+        virtual void function2();
 };
+
+// class BaseClass
 
 #endif
