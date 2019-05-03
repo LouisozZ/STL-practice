@@ -16,6 +16,9 @@ int main()
     reference1.function2();
     reference2.function2();
 
+    item2.BaseClass::function1();
+    item2.function1();
+
     return 0;
 
 }
