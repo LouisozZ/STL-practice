@@ -21,6 +21,7 @@ class BaseClass{
         BaseClass(string & str1, string &str2);
         void function1();
         virtual void function2();
+        virtual void testfunction() = 0;
 };
 
 // class BaseClass
