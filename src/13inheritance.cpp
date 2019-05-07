@@ -4,21 +4,21 @@
 
 int main()
 {
-    BaseClass  item1;
-    DerivedClass item2;
+    // BaseClass  item1;
+    // DerivedClass item2;
 
-    BaseClass &reference1 = item1;
-    BaseClass &reference2 = item2;
+    // BaseClass &reference1 = item1;
+    // BaseClass &reference2 = item2;
 
-    reference1.function1();
-    reference2.function1();
+    // reference1.function1();
+    // reference2.function1();
 
-    reference1.function2();
-    reference2.function2();
+    // reference1.function2();
+    // reference2.function2();
 
-    item2.BaseClass::function1();
-    item2.function1();
+    // item2.BaseClass::function1();
+    // item2.function1();
 
-    return 0;
+    // return 0;
 
 }
