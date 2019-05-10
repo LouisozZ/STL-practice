@@ -1,5 +1,6 @@
 #include <iostream>
 #include <memory>
+#include <vector>
 using namespace std;
 
 char Origin[] = "louis chubby lulu do you get your dreaming life?";
@@ -36,5 +37,27 @@ int main()
     }
     else
         cout << "not find " << find_target << endl;
-    
+
+    auto test = {1,2,3,4,5};
+    // type of test is initializer_list<int>
+    vector<int> vec1 = test;
+    vector<int> vec2({2,3,4,5,6});
+    vector<int> vec3(test);
+    vector<int> vec4{3,4,5,6,7};
+    vector<int> vec5 = {4,5,6,7,8};
+
+    for(auto x : vec1) cout << x << " ";
+    cout << endl;
+
+    for(auto x : vec2) cout << x << " ";
+    cout << endl;
+
+    for(auto x : vec3) cout << x << " ";
+    cout << endl;
+
+    for(auto x : vec4) cout << x << " ";
+    cout << endl;
+
+    for(auto x : vec5) cout << x << " ";
+    cout << endl;
 }
