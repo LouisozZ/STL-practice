@@ -14,4 +14,11 @@
  * @#   ：  字符化（单引号）， x -> 'x'
 */
 
+namespace usualuse{
+    using std::cin;
+    using std::cout;
+    using std::endl;
+    using std::string;
+};
+
 #endif
