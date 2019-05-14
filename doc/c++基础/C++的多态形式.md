@@ -98,4 +98,4 @@ reference2.function2();  // invoke DerivedClass::function2()
 
 **关键字 virtual 只出现在类声明中，只是为了声明函数原型使用，而不出现在类定义里面。**
 
-[返回主目录](../README.md)
+[返回主目录](../../README.md)

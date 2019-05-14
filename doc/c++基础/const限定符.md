@@ -68,4 +68,4 @@ void Test::show_with_para(int para) const
 ```
 上述代码中 show() 函数是没有问题的，但是 show_with_para(int) 函数的定义会报错，因为当其在声明定义中限制了为 const 属性，此时所有的类成员变量对其都是只读的，不能作为左值被赋值，所以 **a = para** 这一句会报错。
 
-[返回主目录](../README.md)
+[返回主目录](../../README.md)
