@@ -31,7 +31,7 @@ cout << "aa = " << aa << endl;  //5
 
 首先说说结果，对 convert_ptr_aa 指针所指向内容的修改并没有引起对应 const 变量值的改变。**但是我遇到一个很奇怪的问题，此时我测试了 convert_ptr_aa 指向的地址以及变量 aa 本身的地址，两个地址是相同的，但是他们的值却不同。**
 
-测试代码可以参考 [typeconvert.cpp](../src/typeconvert.cpp)。
+测试代码可以参考 [typeconvert.cpp](../../src/typeconvert.cpp)。
 
 对于 const_cast 类型转换运算符，还有一点需要注意的，这个运算符只能转换相同类型的 const 属性，也就是说，type-name 字段的类型必须跟 expression 字段的类型是相同的，否则的话会出错。
 
