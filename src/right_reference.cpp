@@ -317,8 +317,8 @@ namespace JustLeftReference{
     }
 };
 
-using namespace WithRigthReference;
-//using namespace JustLeftReference;
+// using namespace WithRigthReference;
+using namespace JustLeftReference;
 
 void function(Test item)
 {
@@ -347,13 +347,13 @@ int main()
     {
         Test item1(3,'1');
         Test item2(5,'2');
-        Test item3;
-        item3 = item1;
-        ShowItem(item3);
-        item3 = item1 + item2;
-        ShowItem(item3);
-        Test item4 = item1 + item2;
-        Test item5(item1 + item2);
+        // Test item3;
+        // item3 = item1;
+        // ShowItem(item3);
+        // item3 = item1 + item2;
+        // ShowItem(item3);
+        // Test item4 = item1 + item2;
+        // Test item5(item1 + item2);
 
         Test item6;
         item6 = std::move(item2);
@@ -362,13 +362,13 @@ int main()
 
         ShowItem(item1);
         ShowItem(item2);
-        ShowItem(item3);
-        ShowItem(item4);
-        ShowItem(item5);
+        // ShowItem(item3);
+        // ShowItem(item4);
+        // ShowItem(item5);
         ShowItem(item6);
 
         function(item1);
-        function(item5 + item1);
+        // function(item5 + item1);
     }
 
     int rref_a = 0;
