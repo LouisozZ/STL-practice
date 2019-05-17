@@ -26,6 +26,12 @@ template<> struct __type_traits<Test>
 };
 #endif
 
+struct test_str{
+    int m_a;
+    double m_b;
+    test_str(int a,double b):m_a(a),m_b(b){};
+};
+
 using namespace std;
 
 int main()
@@ -37,4 +43,8 @@ int main()
     cout << "distance1 : " << distance1 << "\ndistance2 : " << distance2 << endl;
     Test item1;
     Test *item2_ptr = new Test;
+
+    test_str item(3,6.0);
+    cout << item.m_a << item.m_b << endl;
+    return 0;
 }
