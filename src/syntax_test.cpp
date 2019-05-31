@@ -7,6 +7,47 @@
 
 using namespace std;
 
+string get_substr(string& input, int begin,int rbegin){
+    int end,rend;
+    int length = input.size();
+    string result;
+    
+    end = begin;
+    rend = rbegin;
+    while(end < length && rend >= 0 && input[end] == input[rend] && end <= rend){
+        end++;
+        rend--;
+    }
+    if(end>rend)
+        result = input.substr(begin,rbegin+1);
+    return result;
+}
+
+class Solution {
+public:
+    string longestPalindrome(string s) {
+        int length = s.size();
+        if(length <= 1)
+            return s;
+        int i,j;
+        string result(s,0,1);
+        string temp;
+        for(i = 0; i < length; i++){
+            for(j = length-1;j>i;j--){
+                if(s[j] == s[i]){
+                    temp = get_substr(s,i,j);
+                    if(temp.size() > result.size())
+                    {
+                        //swap(temp,result);
+                        result = temp;
+                    }
+                }
+            }
+        }
+        return result;
+    }
+};
+
 class my_test{
     int & m_data;
     public:
@@ -17,6 +58,15 @@ class my_test{
 
 int main(int argc, char *argv[])
 {
+    /*
+    Solution result;
+    string input = "bbbb";
+    string test = input.substr(3,1);
+    cout << test << endl;
+    string out_str = result.longestPalindrome(input);
+    cout << out_str << endl;
+    */
+    
     bool condition;
     int result = 0;
     cout << "cin the condition value:" << endl;
