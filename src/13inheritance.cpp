@@ -2,8 +2,45 @@
 #include "13baseclass.h"
 #include "13derivedclass.h"
 
+class new_base{
+    private:
+        int m_a;
+        std::string m_data;
+    public:
+        new_base(int a = 1, std::string data = "base"):m_a(a),m_data(data){std::cout << "invoke base constructor" << std::endl;}
+        inline virtual void show(){std::cout << "---------base class\na : " << m_a << std::endl <<"data : " << m_data << std::endl;}
+        virtual ~new_base(){std::cout << "base deconstructor" << std::endl;m_data.std::string::~string();}
+};
+
+class new_derived:public new_base{
+    private:
+        int m_age;
+    public:
+        new_derived(int age = 18,int a = 99,std::string data = "derived"):new_base(a,data),m_age(age){std::cout << "invoke derived constructor" << std::endl;}
+        ~new_derived(){std::cout << "derived deconstructor" << std::endl;}
+        inline void show(){std::cout << "---------derived class\nm_age : " << m_age << std::endl;}
+        virtual void virtual_derived_show(){std::cout << "---------derived class\na derived's virtual."<<std::endl;}
+        void nonvirtual_derived_show(){std::cout << "---------derived class\na derived's nonvirtual."<<std::endl;}
+};
+
+
 int main()
 {
+    new_base base1;
+    new_derived derived1;
+
+    base1.show();
+
+    derived1.show();
+    derived1.virtual_derived_show();
+    derived1.nonvirtual_derived_show();
+    std::cout << "=======================" << std::endl;
+    new_base *base_ptr = new new_derived(24);
+
+    base_ptr->show();
+    //base_ptr->virtual_derived_show();
+    //base_ptr->nonvirtual_derived_show();
+
     // BaseClass  item1;
     // DerivedClass item2;
 

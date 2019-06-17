@@ -42,10 +42,12 @@ long ProgramInfo::CurrentTime()
     return (long)curenttime;
 }
 
+#define print_info() PrintInfo(__LINE__)
+
 class ErrorInfo:private ProgramInfo
 {
     public:
-        void PrintInfo();
+        void PrintInfo(int line_num);
         void SetErrorMsg(int e_num, std::string & e_msg){error_number = e_num; error_msg = e_msg;};
         const int GetErrorNum() const {return error_number;};
         const std::string & GetErrorMsg() const {return error_msg;};
@@ -62,14 +64,20 @@ class ErrorInfo:private ProgramInfo
 
 ErrorInfo::~ErrorInfo(){}
 
-void ErrorInfo::PrintInfo()
+void ErrorInfo::PrintInfo(int line_num)
 {
     using std::cout;
     using std::endl;
 
-    cout << "[ " << CurrentTime() << " ] file: " << get_filename() << "  line: " << get_line() << "\t\t";
-    cout << "\"(" << error_number << ") "<< error_msg << "\"" << endl;
+    cout << "[ " << CurrentTime() << " ] file: " << get_filename() << "  line: " << line_num << "\t\t";
+    cout << "ErrMsg:\"(" << error_number << ") "<< error_msg << "\"" << endl;
     return ;    
+}
+
+void throw_msg(){
+    throw "test_throw";
+    std::cout << "function throw_msg" << std::endl;
+    return;
 }
 
 int main()
@@ -84,11 +92,17 @@ int main()
             throw ErrorInfo(5,"test");
         result = a / b;
         std::cout << "finish compute" << std::endl;
+        throw_msg();
+        std::cout << "after throw_msg" << std::endl;
     }
     catch (ErrorInfo& error_item)
     {
-        error_item.PrintInfo();
+        error_item.print_info();
         exit(0);
+    }
+    catch (const char *s)
+    {
+        std::cout << s << std::endl;
     }
 
     std::cout << "a / b = " << result << std::endl;
