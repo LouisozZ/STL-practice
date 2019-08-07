@@ -1,5 +1,11 @@
 # 习惯C++
 
+<!-- TOC -->
+- [习惯C++](#习惯c)
+  - [以 const，enum，inline 替换 \#define](#以-constenuminline-替换-define)
+  - [尽可能使用 const](#尽可能使用-const)
+  - [确定对象在使用前已经被初始化](#确定对象在使用前已经被初始化)
+
 ## 以 const，enum，inline 替换 \#define
 
 如果要声明一个常量，应该使用 const 修饰符，或者使用 enum 声明常量。其中使用 const 是在语言层次表示某个对象(对于内建类型而言就是变量)是不可修改的，而 enum 则是有些类似于 \#define ，相当于是对一个数值常量进行了有名替换。

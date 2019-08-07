@@ -1,5 +1,11 @@
 # C++类型转化运算符
 
+<!-- TOC -->
+- [C++类型转化运算符](#c类型转化运算符)
+  - [dynamic_cast\<type-name\>(expression)](#dynamic_casttype-nameexpression)
+  - [const_cast\<type-name\>(expression)](#const_casttype-nameexpression)
+  - [static_cast\<type-name\>(expression)](#static_casttype-nameexpression)
+
 首先来说，C 的所有基础类型转换在 C++ 中照样能用，但是为了使得类型转换更加的规范，C++ 新添加了四个类型转换运算符：
 
 - dynamic_cast \< type-name \>(expression)
